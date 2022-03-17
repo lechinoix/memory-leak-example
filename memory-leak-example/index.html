@@ -1,0 +1,35 @@
+<body>
+  <h1>Memory Leak Example</h1>
+  <button id="add-button">Add Elements</button>
+  <button id="remove-button">Remove Elements</button>
+  <div id="container"></div>
+</body>
+<style>
+  .element {
+    border: 2px solid;
+    width: 50px;
+    height: 50px;
+  }
+</style>
+<script>
+
+function addElement() {
+  const newElement = document.createElement('div');
+  newElement.className = 'element'
+  elements.push(newElement);
+  document.getElementById('container').appendChild(newElement);
+}
+
+const elements = [];
+
+document.getElementById('add-button').addEventListener('click', e => {
+  for (let i = 0; i < 1000; i++) {
+    addElement()
+  }
+});
+
+document.getElementById('remove-button').addEventListener('click', e => {
+  elements.forEach(el => el.remove())
+});
+
+</script>
