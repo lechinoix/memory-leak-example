@@ -1,0 +1,23 @@
+<body>
+  <h1 id="title"></h1>
+  <button id="add-title">Click me to add title</button>
+  <div id="container"></div>
+</body>
+<script>
+  const addButton = document.getElementById('add-title');
+  const container = document.getElementById('container');
+
+  addButton.addEventListener('click', e => {
+    document.getElementById('title').innerText = 'Hello there !'
+  })
+
+  const addNewLine = (index) => {
+    const newElement = document.createElement('div');
+    newElement.innerHTML = `${index} - I will not write long tasks`
+    container.appendChild(newElement)
+  }
+
+  for (let i = 0; i < 50000; i++) {
+    addNewLine(i)
+  }
+</script>
